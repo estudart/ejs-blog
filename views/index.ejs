@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container px-4 py-5" id="featured-3">
+      <h2 class="pb-2 border-bottom text-color">TechBlog</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <% if (data.length >= 0) { %> <% for (var i = 0; i < data.length; i++) {
+        %>
+        <div class="feature col">
+          <h3 class="fs-2 text-color"><%= data[i].name %></h3>
+          <p class="text-color"><%= data[i].title %></p>
+          <div class="container" style="display: flex; padding-left: 0">
+            <form action="/deleteArticle" method="post">
+              <input
+                type="hidden"
+                name="articleTitle"
+                value="<%= data[i].title %>"
+              />
+              <input type="submit" class="btn btn-light" value="Delete" />
+            </form>
+            <form action="/showArticle" method="post">
+              <input
+                type="hidden"
+                name="articleText"
+                value="<%= data[i].text %>"
+              />
+              <input
+                type="hidden"
+                name="articleAuthor"
+                value="<%= data[i].name %>"
+              />
+              <input
+                type="hidden"
+                name="articleTitle"
+                value="<%= data[i].title %>"
+              />
+              <input
+                type="hidden"
+                name="articleDate"
+                value="<%= data[i].date %>"
+              />
+              <input
+                type="submit"
+                class="btn btn-light mx-3"
+                value="See text"
+              />
+            </form>
+          </div>
+        </div>
+        <% } %> <% } %>
+      </div>
+      <form action="/addArticles" method="get">
+        <input type="submit" class="btn btn-primary mb-3" value="Add New" />
+      </form>
+    </div>
+  </body>
+</html>
