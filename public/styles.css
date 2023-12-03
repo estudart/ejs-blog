@@ -3,5 +3,8 @@
 }
 
 body {
-  background-color: rgb(128, 181, 228);
+  background-image: url("/clouds.jpg");
+  background-size: cover; /* or "contain" based on your preference */
+  background-position: center center; /* adjust as needed */
+  background-repeat: repeat;
 }
